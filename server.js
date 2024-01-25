@@ -1,12 +1,11 @@
 import express from 'express'
-
+import path, { dirname } from 'path'
 import { Server } from 'socket.io'
 import cors from 'cors'
 import http from 'http'
 import {connect} from './config.js'
 import { chatModel } from './chat.schema.js'
 const app=express();
-
 //create server using http
 const server=http.createServer(app);
 
@@ -55,8 +54,12 @@ io.on('connection',(socket)=>{
 })
 app.use(express.static('public'));
 
+// app.get("/",(req,res)=>{
+//     res.redirect("/client.html");
+// })
+
 app.get("/",(req,res)=>{
-    res.redirect("/client.html");
+    res.sendFile(path.join(path.resolve(),"public","client.html"));
 })
 
 server.listen(3000,()=>{
