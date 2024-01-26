@@ -52,15 +52,15 @@ io.on('connection',(socket)=>{
         console.log("Connection is disconnected...")
     })
 })
-app.use(express.static('public'));
+// app.use(express.static('public'));
+
+// // app.get("/",(req,res)=>{
+// //     res.redirect("/client.html");
+// // })
 
 // app.get("/",(req,res)=>{
-//     res.redirect("/client.html");
+//     res.sendFile(path.join(path.resolve(),"public","client.html"));
 // })
-
-app.get("/",(req,res)=>{
-    res.sendFile(path.join(path.resolve(),"public","client.html"));
-})
 
 server.listen(3000,()=>{
     console.log("listening on port 3000...");

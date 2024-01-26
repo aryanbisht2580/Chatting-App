@@ -12,9 +12,6 @@
         <div id="message-list">
             <!-- list will contain messages  -->
         </div>
-        <input type="text" id="testName" value="x">
-        <input type="text" id="testRoom" value="1000">
-        <button id="testit">Try it</button>
         <div class="inps">
             <input type="text" id="message-input">
             <button id="send-message">SEND</button>
@@ -26,22 +23,15 @@
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script>
         const socket=io.connect('http://localhost:3000');
-        // const username=prompt("Please enter your name:- ");
-        // const room=prompt("Enter the room number");
-       
-        const tbtn=document.getElementById("testit");
-
-        tbtn.addEventListener("click",()=>{
+        const username=prompt("Please enter your name:- ");
+        const room=prompt("Enter the room number");
             
-            const messageList=document.getElementById("message-list");
-            messageList.innerHTML="";
-
-            const username=document.getElementById("testName").value;
-            const room=document.getElementById("testRoom").value;
+            
             socket.emit("join",{username,room});
 
             //get elemements
             const messageInput=document.getElementById("message-input")
+            const messageList=document.getElementById("message-list");
             const sendButton=document.getElementById("send-message")
 
             sendButton.addEventListener("click",()=>{
@@ -76,7 +66,6 @@
                     messageList.appendChild(messageElement);
                 })
             })
-        })
         
         // emit username to the server
         
